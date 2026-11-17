@@ -10,6 +10,31 @@
   <a href="https://courses.datatalks.club/register/production-ai-agents-generative-media/"><img src="https://img.shields.io/badge/Apply-Free%20live%20cohort-2ea44f?style=for-the-badge" alt="Apply for the free live cohort"></a>
 </p>
 
+<p align="center">
+<a href="https://datatalks.club/slack.html">Join Slack</a> •
+<a href="https://app.slack.com/client/T01ATQK62F8/C0CEG1BUDKL">#course-ai-mediagen Channel</a> •
+<a href="https://www.youtube.com/playlist?list=PLC73BZc0zZKM">Course Playlist</a> •
+<a href="https://datatalks.club/faq/production-ai-agents-generative-media.html">FAQ</a>
+</p>
+
+<p align="center">
+<a href="https://github.com/DataTalksClub/production-ai-agents-for-media-generation/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" alt="PRs welcome"></a>
+<a href="https://datatalks.club/slack.html"><img src="https://img.shields.io/badge/Slack-Join%20Community-4A154B?style=for-the-badge&logo=slack" alt="Join Slack"></a>
+</p>
+
+## Quick Links
+
+| Resource | Link |
+|----------|------|
+| Course materials | [GitHub repository](https://github.com/DataTalksClub/production-ai-agents-for-media-generation) |
+| Apply | [Application form](https://courses.datatalks.club/register/production-ai-agents-generative-media/) |
+| Video lectures | [YouTube playlist](https://www.youtube.com/playlist?list=PLC73BZc0zZKM) · [Course launch stream](https://www.youtube.com/watch?v=Y5__PUmOTdg) · [Pre-course Q&A](https://www.youtube.com/watch?v=iACtrkiXndw) |
+| Documentation | [Production AI Agents for Generative Media](https://datatalks.club/docs/courses/production-ai-agents-generative-media/) |
+| Course platform (deadlines, homework) | [courses.datatalks.club](https://courses.datatalks.club/production-ai-agents-generative-media/) |
+| Slack channel | [#course-ai-mediagen](https://app.slack.com/client/T01ATQK62F8/C0CEG1BUDKL) |
+| FAQ | [FAQ document](https://datatalks.club/faq/production-ai-agents-generative-media.html) |
+| GPU credits | [Nebius AI Builder Program](https://dev.nebius.com/builders) |
+
 > How do you build a production AI system when an agent can launch expensive, slow, failure-prone GPU workloads that produce large media artifacts?
 
 Media agents are an engineering problem, not a prompting problem. In this course, you build one production system that handles it: a **Personalized Media Factory**.
@@ -21,7 +46,7 @@ Media agents are an engineering problem, not a prompting problem. In this course
 5. **Scale:** from 1 to 1,000+ records, with a cost per asset
 
 <p align="center">
-  <img src="images/diagram-media-factory.png" alt="The Personalized Media Factory: a brief goes to an agent (Module 2), GPU models generate image, voice or video (Module 1), a check (Module 4) sends assets that aren't good enough back to the agent to revise and regenerate, and the factory scales from 1 to 1,000+ records with a cost per asset (Module 3)" width="100%">
+  <img src="images/diagram-media-factory.png" alt="The Personalized Media Factory: a brief goes to an agent (Module 2), GPU models generate image, voice or video (Module 1), a check (Module 2) sends assets that aren't good enough back to the agent to revise and regenerate, Module 4 measures quality and decides when the factory is ready to ship, and the factory scales from 1 to 1,000+ records with a cost per asset (Module 3)" width="100%">
 </p>
 
 ## What You'll Learn
@@ -30,6 +55,7 @@ Media agents are an engineering problem, not a prompting problem. In this course
 * How to give agents GPU models as tools (MCP) and build generate → evaluate → regenerate loops
 * How to fan out batch workloads on spot GPUs, handle failures and report cost per asset
 * How to add evals, tracing and SLOs so you can say what a media agent costs and when it is good enough to ship
+* Optional: how to fine-tune a LoRA for a consistent style and keep it only if it passes a regression gate
 
 **Want to build it with the cohort?** [Apply for free](https://courses.datatalks.club/register/production-ai-agents-generative-media/).
 
@@ -95,23 +121,24 @@ Mon 30 Nov - Sun 6 Dec 2026
 
 ### [Module 3: Batch Media Generation at Scale](/03-batch-media-generation-at-scale)
 
-Mon 7 - Sun 13 Dec 2026
+Mon 7 - Sun 13 Dec 2026 · Run → Recover → Optimize → Control
 
-* Fan-out with Jobs
-* Spot GPUs and design for interruption
-* Optimizing cost per asset: cold start, VRAM and speed
-* Breaking the pipeline on purpose
-* **Homework 3: Factory Scale Challenge** (200 records over 10 parallel Jobs, public leaderboard), due Mon 14 Dec
+* 3.1 Batch Generation with Serverless Jobs
+* 3.2 Spot GPUs and Surviving Interruptions
+* 3.3 Reducing Media Generation Costs
+* 3.4 Keeping Batch Runs Within Limits
+* **Homework 3: Factory Scale Challenge** (200 records over 10 parallel Jobs, leaderboard), due Mon 14 Dec
 
 ### [Module 4: Evaluation, Observability and Production](/04-evaluation-observability-production)
 
-Mon 14 - Sun 20 Dec 2026
+Mon 14 - Sun 20 Dec 2026 · Measure → Improve → Understand → Decide
 
-* Evaluating generative systems: system, agent and media
-* Judge calibration and regression gates
-* Observability and tracing
-* Designing for production: architecture, SLO, dashboard and alerts
-* Production concerns and the capstone brief: auth, quotas, abuse, prompt injection, content safety, licensing and provenance
+> **Updated 13 Nov 2026.** This lesson plan replaces the earlier outline. Lessons may still change before the module starts.
+
+* 4.1 Evaluating Media Quality
+* 4.2 Fine-Tuning for Consistent Style (optional)
+* 4.3 Tracing Runs with MLflow
+* 4.4 Production Readiness and Go/No-Go
 * No homework: you apply Module 4 in your capstone (**capstone brief**)
 
 ### [Capstone Project](/projects)
@@ -158,7 +185,7 @@ Working builders running open or custom GPU media models:
 
 Prior LLM or MLOps course experience helps but isn't required.
 
-**Not covered:** diffusion maths, training foundation models, deep fine-tuning, CUDA, Kubernetes, RAG, LLM fundamentals.
+**Not covered:** diffusion maths, training foundation models, deep fine-tuning (Module 4 covers only optional LoRA style tuning from a prepared recipe), CUDA, Kubernetes, RAG, LLM fundamentals.
 
 **Sounds like you?** [Apply for free](https://courses.datatalks.club/register/production-ai-agents-generative-media/).
 
@@ -181,7 +208,7 @@ Not applying? All materials are in this repo and anyone can follow along. You'll
 
 The course itself is free. The workloads run on GPUs, which cost money:
 
-* **GPU credits:** applicants get credits through the [Nebius AI Builder Program](https://dev.nebius.com/builders), which is free to join. Usage beyond the credits is billed to your account.
+* **GPU credits:** applicants get credits through the [Nebius AI Builder Program](https://dev.nebius.com/builders), which is free to join: $25 on joining and $50 after Homework 2. Usage beyond the credits is billed to your account.
 * **Following on your own:** you pay for your own GPU usage.
 
 Each module reports cost per asset, so you'll know what a run costs before you scale it.
@@ -196,7 +223,7 @@ Each module reports cost per asset, so you'll know what a run costs before you s
 | Agents and tools | Raw tool calling → MCP | Pydantic AI, LangGraph |
 | GPU compute | Nebius Serverless AI: Jobs, Endpoints | DevLabs with JupyterLab |
 | Storage and API | S3-compatible Object Storage · FastAPI | Gradio, Streamlit |
-| Tracking, tracing, evals | To be announced | Langfuse, OpenTelemetry |
+| Tracking, tracing, evals | MLflow | Langfuse, OpenTelemetry |
 
 ## Open and Portable
 
@@ -245,7 +272,7 @@ Open-weights models come with their own licences. Check each model's licence bef
 
 ## Getting Help
 
-Ask questions in the [DataTalks.Club Slack](https://datatalks.club/slack.html) and bring them to the weekly live office hour.
+Join the [DataTalks.Club Slack](https://datatalks.club/slack.html) and ask questions in the [#course-ai-mediagen](https://app.slack.com/client/T01ATQK62F8/C0CEG1BUDKL) channel. See also the [FAQ](https://datatalks.club/faq/production-ai-agents-generative-media.html) and the [course docs](https://datatalks.club/docs/courses/production-ai-agents-generative-media/). Bring questions to the weekly live office hour.
 
 <p align="center">
   <a href="https://courses.datatalks.club/register/production-ai-agents-generative-media/"><img src="https://img.shields.io/badge/Apply-Free%20live%20cohort-2ea44f?style=for-the-badge" alt="Apply for the free live cohort"></a>
